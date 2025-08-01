@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4c92d3c-a560-4a4c-a41b-04c94909b630" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/form.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory/templates/inventory/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/inventory/templates/inventory/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryPro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryPro/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InventoryPro/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryPro/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/item_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/inventory/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/views.py" afterDir="false" />
     </list>
@@ -40,6 +38,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="308NqA10qbgo3IgyYaSctFnD5Xi" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -106,15 +107,5 @@
       <updated>1753005427860</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/inventory/views.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
