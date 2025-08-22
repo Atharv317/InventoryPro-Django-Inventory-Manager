@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b4c92d3c-a560-4a4c-a41b-04c94909b630" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/item_confirm_delete.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_confirm_delete.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/item_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/item_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/item_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inventory/templates/inventory/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/inventory/templates/inventory/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runtime.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runtime.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/vecel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vecel.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
