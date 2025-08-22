@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b4c92d3c-a560-4a4c-a41b-04c94909b630" name="Changes" comment="" />
+    <list default="true" id="b4c92d3c-a560-4a4c-a41b-04c94909b630" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/vecel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vecel.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
