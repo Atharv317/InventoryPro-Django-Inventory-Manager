@@ -1,79 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Inventory</title>
+  <title>InventoryPro Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #f8f9fa; }
+    .card { border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    .btn { border-radius: 8px; }
+    .table th { font-weight: 600; }
+    .navbar-brand { font-weight: bold; letter-spacing: 0.5px; }
+  </style>
 </head>
-<body class="bg-light">
-<div class="container py-4">
+<body>
 
-  <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1>Inventory</h1>
-    <div>
-      <span class="me-3">Welcome, <strong>{{ user.username }}</strong></span>
-      <a href="{% url 'logout' %}" class="btn btn-outline-secondary btn-sm">Logout</a>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'item_list' %}">📦 InventoryPro</a>
+      <div class="d-flex">
+        <span class="navbar-text text-white me-3">Welcome, <strong>{{ user.username }}</strong></span>
+        <a href="{% url 'logout' %}" class="btn btn-outline-light btn-sm">Logout</a>
+      </div>
     </div>
+  </nav>
+
+  <!-- Main container -->
+  <div class="container">
+
+    <!-- Search & Controls -->
+    <form method="get" class="row g-2 mb-4 align-items-end">
+      <div class="col-md-3">
+        <label class="form-label fw-semibold">Search</label>
+        <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Item name...">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-semibold">Category</label>
+        <input type="text" name="category" value="{{ category }}" class="form-control" placeholder="Category...">
+      </div>
+      <div class="col-md-6 text-end">
+        {% if low_stock_count %}
+          <span class="badge bg-danger p-2 me-2">⚠️ Low stock: {{ low_stock_count }}</span>
+        {% endif %}
+        <button class="btn btn-primary">🔍 Search</button>
+        <a href="{% url 'item_list' %}" class="btn btn-outline-secondary">Clear</a>
+        <a href="{% url 'add_item' %}" class="btn btn-success ms-2">+ Add Item</a>
+      </div>
+    </form>
+
+    <!-- Inventory Table -->
+    <div class="card">
+      <div class="card-header bg-white border-0 py-3">
+        <h5 class="mb-0 fw-bold">📋 Inventory List</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-light">
+            <tr>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Category</th>
+              <th>Threshold</th>
+              <th class="text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in items %}
+            <tr class="{% if item.is_low_stock %}table-warning{% endif %}">
+              <td class="fw-semibold">{{ item.name }}</td>
+              <td>
+                {{ item.quantity }}
+                {% if item.is_low_stock %}
+                  <span class="badge bg-danger ms-2">Low</span>
+                {% endif %}
+              </td>
+              <td>₹{{ item.price }}</td>
+              <td>{{ item.category }}</td>
+              <td>{{ item.low_stock_threshold }}</td>
+              <td class="text-center">
+                <a href="{% url 'edit_item' item.pk %}" class="btn btn-sm btn-outline-primary me-1">✏️ Edit</a>
+                <a href="{% url 'delete_item' item.pk %}" class="btn btn-sm btn-outline-danger">🗑 Delete</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center text-muted py-4">No items found.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
   </div>
 
-  <form method="get" class="row g-2 mb-3">
-    <div class="col-auto">
-      <input type="text" name="q" value="{{ q }}" class="form-control" placeholder="Search name...">
-    </div>
-    <div class="col-auto">
-      <input type="text" name="category" value="{{ category }}" class="form-control" placeholder="Category...">
-    </div>
-    <div class="col-auto">
-      <button class="btn btn-primary">Search</button>
-      <a href="{% url 'item_list' %}" class="btn btn-outline-secondary">Clear</a>
-    </div>
-    <div class="col text-end">
-      {% if low_stock_count %}
-        <span class="badge bg-danger">Low stock: {{ low_stock_count }}</span>
-      {% endif %}
-      <a href="{% url 'add_item' %}" class="btn btn-success ms-2">+ Add Item</a>
-    </div>
-  </form>
-
-  <div class="card">
-    <div class="table-responsive">
-      <table class="table table-hover mb-0">
-        <thead class="table-light">
-          <tr>
-            <th>Name</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Threshold</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for item in items %}
-          <tr class="{% if item.is_low_stock %}table-warning{% endif %}">
-            <td>{{ item.name }}</td>
-            <td>
-              {{ item.quantity }}
-              {% if item.is_low_stock %}
-                <span class="badge bg-danger ms-2">Low</span>
-              {% endif %}
-            </td>
-            <td>{{ item.price }}</td>
-            <td>{{ item.category }}</td>
-            <td>{{ item.low_stock_threshold }}</td>
-            <td>
-              <a href="{% url 'edit_item' item.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-              <a href="{% url 'delete_item' item.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
-            </td>
-          </tr>
-          {% empty %}
-          <tr><td colspan="6" class="text-center text-muted">No items found.</td></tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
