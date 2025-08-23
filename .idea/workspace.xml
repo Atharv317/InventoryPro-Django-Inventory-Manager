@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b4c92d3c-a560-4a4c-a41b-04c94909b630" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/index.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/InventoryPro/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/InventoryPro/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vecel.json" beforeDir="false" afterPath="$PROJECT_DIR$/vecel.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +67,11 @@
       <ReportDescription localRun="true" path="C:\Users\anujk\AppData\Local\Temp\qodana_output\qodana.sarif.json" reportGuid="b86e31c4-5994-41e2-9190-c6d05f218261" reportId="InventoryPro/qodana/2025-07-24" />
     </option>
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Projects\InventoryPro" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="InventoryPro" />
@@ -114,5 +117,16 @@
       <updated>1753005427860</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/InventoryPro/settings.py</url>
+          <line>70</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

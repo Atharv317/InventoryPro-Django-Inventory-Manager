@@ -29,13 +29,13 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "inventory",
     "django.contrib.staticfiles",
+    "inventory",   # ✅ Your custom app
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",   # ✅ Added
+    "whitenoise.middleware.WhiteNoiseMiddleware",   # ✅ For static files
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -53,6 +53,7 @@ TEMPLATES = [
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
+                "django.template.context_processors.debug",
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
@@ -68,11 +69,16 @@ WSGI_APPLICATION = "InventoryPro.wsgi.application"
 # -----------------------
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'inventorypro',      # Database ka naam
+        'USER': 'postgres',           # PostgreSQL username
+        'PASSWORD': 'Shukla@464',   # PostgreSQL password
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 # -----------------------
 # PASSWORD VALIDATION
@@ -103,7 +109,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-# ⚠️ Remove this if you don’t have a custom "static" folder
+# Uncomment if you have a custom static folder
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
 
 # -----------------------
