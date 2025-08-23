@@ -1,27 +1,21 @@
-"""
-Django settings for InventoryPro project.
-"""
-
 from pathlib import Path
 import os
+import dj_database_url
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# -----------------------
-# SECURITY SETTINGS
-# -----------------------
+# Load environment variables
+load_dotenv()
 
 SECRET_KEY = os.environ.get(
-    "SECRET_KEY", "django-insecure-^wgd3myc9zodm0cj93i^zd+(mko!3na%oem+a!34o&^0#mq^f0"
+    "SECRET_KEY",
+    "django-insecure-^wgd3myc9zodm0cj93i^zd+(mko!3na%oem+a!34o&^0#mq^f0"
 )
 
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = os.environ.get("DEBUG", "True") == "True"
 
 ALLOWED_HOSTS = ['.vercel.app', '127.0.0.1', 'localhost']
-
-# -----------------------
-# APPLICATIONS
-# -----------------------
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -30,12 +24,12 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "inventory",   # ✅ Your custom app
+    "inventory",
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",   # ✅ For static files
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -65,25 +59,35 @@ TEMPLATES = [
 WSGI_APPLICATION = "InventoryPro.wsgi.application"
 
 # -----------------------
-# DATABASE
+# DATABASE CONFIGURATION
 # -----------------------
+DATABASE_URL = os.environ.get("DATABASE_URL")
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'inventorypro',      # Database ka naam
-        'USER': 'postgres',           # PostgreSQL username
-        'PASSWORD': 'Shukla@464',   # PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+if DATABASE_URL:
+    # ✅ Production / Neon / Vercel
+    DATABASES = {
+        'default': dj_database_url.parse(
+            DATABASE_URL,
+            conn_max_age=600,
+            ssl_require=True
+        )
     }
-}
-
+else:
+    # ✅ Local Development (Fallback)
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'inventorypro',
+            'USER': 'postgres',
+            'PASSWORD': 'Shukla@464',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # -----------------------
 # PASSWORD VALIDATION
 # -----------------------
-
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
     {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
@@ -94,34 +98,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # -----------------------
 # INTERNATIONALIZATION
 # -----------------------
-
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
 # -----------------------
-# STATIC FILES CONFIGURATION
+# STATIC FILES
 # -----------------------
-
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# Uncomment if you have a custom static folder
-# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
-# -----------------------
-# LOGIN SETTINGS
-# -----------------------
 
 LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "item_list"
 LOGOUT_REDIRECT_URL = "login"
-
-# -----------------------
-# DEFAULT PRIMARY KEY FIELD TYPE
-# -----------------------
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
